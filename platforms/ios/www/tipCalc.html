@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<head>
+    <!--<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0a1/jquery.mobile-1.0a1.min.css" />-->
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0rc2/jquery.mobile-1.0rc2.min.css" />
+    <!--<script src="http://code.jquery.com/jquery-1.4.3.min.js"></script>-->
+    <script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+    <!--<script src="http://code.jquery.com/mobile/1.0a1/jquery.mobile-1.0a1.min.js"></script>-->
+    <script src="http://code.jquery.com/mobile/1.0rc2/jquery.mobile-1.0rc2.min.js"></script>
+    <script src="http://jquery.ibm.navitend.com/utils.js"></script>
+    
+    <title>
+        List Example
+    </title>
+    <style type="text/css">
+        ol { list-style: upper-alpha;}
+        ol ol {list-style: decimal;}
+        nav {
+            width: auto;
+            height:auto;
+            background:#f3f3f3;
+            border:1px solid #ff0000;
+            position:absolute;
+            left:50px;
+            top:25px;
+        }
+    nav ul {
+        list-style-type:none;
+        margin:0 auto;
+    }
+    nav ul li {
+        float:left;
+        width:120px;
+        text-align: left;
+        border:2px;
+    }
+    table {
+        border: solid;
+        width:100%;
+        
+    }
+    
+        </style>
+    <script type="text/javascript">
+        <!--
+        document.writeln("Put in the tip % and tax % and then add base charge for people in your group.  Click Calculate when done!");
+        
+        function addRow1() {
+            var table = document.getElementById('tipTable');
+            var rowcount = table.rows.length;
+            var row = table.insertRow(rowcount);
+            
+            var colcount = table.rows[0].cells.length;
+            
+            for(var i=0; i<colcount; i++) {
+                var newcell = row.insertCell(i);
+                newcell.innerHTML = table.rows[0].cells[i].innerHTML;
+                newcell.childNodes[0].value="";
+            }
+            
+            
+        }
+    
+    function addRow(numrows) {
+        
+        
+        // get table ref
+        var table = document.getElementById('tipTable');
+        //alert("after get tipTable");
+        
+        // create new row
+        var newRow = document.createElement("tr");
+        //alert("created tr");
+        
+        var cell1 = document.createElement("td");
+        var cell2 = document.createElement("td");
+        //alert("created 2 td cells");
+        
+        // create input cell Element
+        var newElement = document.createElement("input");
+        newElement.setAttribute("type", "text");
+        newElement.setAttribute("name", "name_1");
+        newElement.setAttribute("id", "id_1");
+        
+        //alert("created input element 1");
+        cell1.appendChild(newElement);
+        //alert("appended element 1 to cell");
+        // create input cell 2 Element
+        //TODO: make this uneditable
+        var newElement2 = document.createElement("input");
+        newElement2.setAttribute("type", "text");
+        newElement2.setAttribute("name", "name_2");
+        newElement2.setAttribute("id", "id_2");
+        cell2.appendChild(newElement2);
+        
+        newRow.appendChild(cell1);
+        newRow.appendChild(cell2);
+        //table.appendChild(newRow);
+        $('#tipTable').append(newRow).trigger('create');
+        
+    }
+    
+    function calculate() {
+        var table = document.getElementById('tipTable');
+        var colcount = table.rows[0].cells.length;
+        var rowcount = table.rows.length;
+        
+        var tipPercent = document.getElementById('tip_percent').value;
+        var taxPercent = document.getElementById('tax_percent').value;
+        
+        //alert(table.rows[1].cells[0].childNodes[0].value);
+        //alert(colcount);
+        //alert(tipPercent);
+        //alert(taxPercent);
+        
+        
+        
+        
+        for(i=1;i<rowcount;i++){
+            var base = table.rows[i].cells[0].childNodes[0].value;
+            var total = parseFloat(base) + parseFloat(base*tipPercent/100) + parseFloat(base*taxPercent/100);
+            table.rows[i].cells[1].childNodes[0].value = total;
+        }
+        
+        
+    }
+    
+    -->
+        </script>
+</head>
+
+<!--
+ http://developer.apple.com/internet/webcontent/dom2i.html
+ http://www.w3.org/TR/DOM-Level-2-Core/core.html#ID-745549614
+ http://www.javascriptkit.com/domref/documentmethods.shtml
+ -->
+<body>
+    <div data-role="page">
+        <div data-role="header">
+            <h1>Tip Monkey</h1>
+        </div>
+        <div data-role="content">
+            <form method="post" name="group_tip_form" action="" >
+                
+                
+                <div data-role="filedcontain">
+                    <label for="tip_percent"> Tip Percent:</label>
+                    <input type="number" name="tip_percent" id="tip_percent"/>
+                </div>
+                <br/>
+                <label for="tax_percent"> Tax Percent:</label>
+                <input type="text" name="tax_percent" id="tax_percent"/>
+                <br/>
+                
+                
+                <input type="button" value="Add Person" onclick="addRow('tipTable')" />
+                
+                
+                
+                
+                <div data-role="fieldcontain">
+                    <table id="tipTable">
+                        <tr>
+                            <th>base</th>
+                            <th>total</th>
+                            
+                            </table>
+                </div>
+                <input type="button" value="Calculate" onclick="calculate()" />
+                
+            </form>
+            
+        </div>
+        <div data-role="footer">
+            <h1>  </h1>
+        </div>
+    </div>
+    
+    
+    
+</body>
