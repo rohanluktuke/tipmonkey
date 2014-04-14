@@ -2,10 +2,10 @@
 <widget id="com.rohan.tipmonkey" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>TipMonkey</name>
     <description>
-        A sample Apache Cordova application that responds to the deviceready event.
+        An simple app that helps you pay only for what you ate!
     </description>
-    <author email="dev@cordova.apache.org" href="http://cordova.io">
-        Apache Cordova Team
+    <author email="rohanluktuke@gmail.com" href="">
+        Rohan Luktuke
     </author>
     <content src="tipCalc.html" />
     <access origin="*" />
